@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Portal Signup</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  margin: 0;
+  padding: 0;
+}
+
+.signup-container {
+  width: 400px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.signup-container h1 {
+  text-align: center;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #28a745;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+#message {
+  text-align: center;
+  font-size: 14px;
+  color: red;
+}
+
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h1>Job Portal Signup</h1>
+    <form id="signupForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      
+      <label for="role">Role</label>
+      <select id="role" name="role" required>
+        <option value="">Select Role</option>
+        <option value="jobseeker">Job Seeker</option>
+        <option value="employer">Employer</option>
+      </select>
+      
+      <button type="submit">Sign Up</button>
+    </form>
+    <p id="message"></p>
+  </div>
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
+  const role = document.getElementById('role').value;
+
+  const message = document.getElementById('message');
+
+  // Basic validation
+  if (!name || !email || !password || !role) {
+    message.textContent = 'All fields are required!';
+    return;
+  }
+
+  if (password.length < 6) {
+    message.textContent = 'Password must be at least 6 characters!';
+    return;
+  }
+
+  // Success
+  message.style.color = 'green';
+  message.textContent = 'Signup successful! Welcome to the Job Portal.';
+  
+  // Optionally, you can reset the form after success
+  this.reset();
+});
+
+  </script>
+</body>
+</html>
